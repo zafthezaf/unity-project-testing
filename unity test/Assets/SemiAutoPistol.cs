@@ -11,6 +11,8 @@ public class SemiAutoPistol : MonoBehaviour
     public Camera fpsCam;
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
+    public AudioSource audioSource;
+
 
     private float nextTimeToFire = 0f;
 
@@ -27,6 +29,9 @@ public class SemiAutoPistol : MonoBehaviour
     {
         if (muzzleFlash != null)
             muzzleFlash.Play();
+
+        if (audioSource != null)
+            audioSource.Play();
 
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
