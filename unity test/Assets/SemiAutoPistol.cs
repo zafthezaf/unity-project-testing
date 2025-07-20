@@ -24,24 +24,26 @@ public class SemiAutoPistol : MonoBehaviour
 
     void Shoot()
     {
-        if (muzzleFlash != null) muzzleFlash.Play();
+        if (muzzleFlash != null)
+                muzzleFlash.Play();
 
         RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
-        {
-            Debug.Log("Hit: " + hit.transform.name);
-
-            // If target has health, apply damage (optional hook)
-            var target = hit.transform.GetComponent<EnemyHealth>();
-            if (target != null)
+            if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
             {
-              Vector3 hitDirection = hit.transform.position - fpsCam.transform.position;
-              float impactForce = 1.2f; // Adjust this to feel right
-               target.TakeDamage(damage, hitDirection, impactForce);
-            }
+                Debug.Log("Hit: " + hit.transform.name);
+
+                // If target has health, apply damage (optional hook)
+                var target = hit.transform.GetComponent<EnemyHealth>();
+                if (target != null)
+                {
+                    Vector3 hitDirection = hit.transform.position - fpsCam.transform.position;
+                    float impactForce = 1.2f; // Adjust this to feel right
+                    target.TakeDamage(damage, hitDirection, impactForce);
+                }
 
                 GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(impactGO, 2f);
+                
             }
         }
     }
