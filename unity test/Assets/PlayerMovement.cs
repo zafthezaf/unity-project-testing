@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour {
     public float maxSpeed = 20;
     public bool grounded;
     public LayerMask whatIsGround;
+    // Vector2 inputDir is now handled in Movement() method after x and y are set
+
     
     public float counterMovement = 0.175f;
     private float threshold = 0.01f;
@@ -146,8 +148,10 @@ public class PlayerMovement : MonoBehaviour {
         if (grounded && crouching) multiplierV = 0f;
 
         //Apply forces to move player
-        rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * multiplier * multiplierV);
-        rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * multiplier);
+        Vector2 inputDir = new Vector2(x, y).normalized;
+        Vector3 moveDirection = orientation.forward * inputDir.y + orientation.right * inputDir.x;
+        rb.AddForce(moveDirection * moveSpeed * Time.deltaTime * multiplier * multiplierV);
+
     }
 
     private void Jump() {
