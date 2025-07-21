@@ -348,7 +348,7 @@ GameObject:
   m_Component:
   - component: {fileID: 161282843}
   - component: {fileID: 161282844}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GunLogic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -913,7 +913,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 321978825}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MuzzlePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -948,9 +948,9 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
-  - component: {fileID: 330585548}
   - component: {fileID: 330585549}
-  m_Layer: 0
+  - component: {fileID: 330585550}
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -1076,7 +1076,25 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!114 &330585548
+--- !u!114 &330585549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b990053198610a49bb5a0394827c71b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 3
+  dragSpeed: 6
+  throwForce: 10
+  dragLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!114 &330585550
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1136,23 +1154,6 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
---- !u!114 &330585549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b990053198610a49bb5a0394827c71b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxDistance: 3
-  dragSpeed: 4
-  dragLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!1 &334534672
 GameObject:
   m_ObjectHideFlags: 0
@@ -2111,6 +2112,55 @@ MonoBehaviour:
   slideForce: 400
   slideCounterMovement: 0.2
   jumpForce: 450
+--- !u!1 &1097898692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1097898694}
+  - component: {fileID: 1097898693}
+  m_Layer: 0
+  m_Name: PostProcessingVolume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1097898693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097898692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 10
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 6c915be8e64ff2846adf3182c1034bb8, type: 2}
+--- !u!4 &1097898694
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097898692}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.10635, y: -1.5, z: 11.39524}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1130858719
 GameObject:
   m_ObjectHideFlags: 0
@@ -2476,7 +2526,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1777621432}
   - component: {fileID: 1777621433}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gun Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2565,7 +2615,7 @@ GameObject:
   - component: {fileID: 2012071583}
   - component: {fileID: 2012071585}
   - component: {fileID: 2012071584}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MuzzleFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2672,7 +2722,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012071582}
   serializedVersion: 8
-  lengthInSec: 0.1
+  lengthInSec: 0.2
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -2747,7 +2797,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.05
+      scalar: 0.1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -4180,7 +4230,7 @@ ParticleSystem:
     flipU: 0
     flipV: 0
   VelocityModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -7723,7 +7773,7 @@ GameObject:
   - component: {fileID: 543450653691099855}
   - component: {fileID: 688256343}
   - component: {fileID: 919132149163384950}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Glock 17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7961,7 +8011,7 @@ GameObject:
   - component: {fileID: 1151388028556217239}
   - component: {fileID: 2823090746395538141}
   - component: {fileID: 1587545473910707785}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7981,3 +8031,4 @@ SceneRoots:
   - {fileID: 543450652516488537}
   - {fileID: 1900758315}
   - {fileID: 201096761}
+  - {fileID: 1097898694}
