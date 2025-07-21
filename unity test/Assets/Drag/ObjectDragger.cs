@@ -4,6 +4,7 @@ public class ObjectDragger : MonoBehaviour
 {
     public float maxDistance = 5f;
     public float dragSpeed = 10f;
+    public float throwForce = 10f;
     public LayerMask dragLayerMask;
 
     private Camera cam;
@@ -33,29 +34,31 @@ public class ObjectDragger : MonoBehaviour
         }
     }
 
-void TryStartDrag()
-{
-    Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-    if (Physics.Raycast(ray, out RaycastHit hit, maxDistance, dragLayerMask))
+    void TryStartDrag()
     {
-        if (hit.collider.GetComponent<Draggable>() != null)
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        if (Physics.Raycast(ray, out RaycastHit hit, maxDistance, dragLayerMask))
         {
-            Rigidbody rb = hit.collider.attachedRigidbody;
-            if (rb != null)
+            if (hit.collider.GetComponent<Draggable>() != null)
             {
-                draggedRb = rb;
-                draggedRb.useGravity = false;
+                Rigidbody rb = hit.collider.attachedRigidbody;
+                if (rb != null)
+                {
+                    draggedRb = rb;
+                    draggedRb.useGravity = false;
+                }
             }
         }
     }
-}
-
 
     void StopDrag()
     {
         if (draggedRb != null)
         {
-            draggedRb.linearVelocity = Vector3.zero;
+            // Apply throw force in the camera's forward direction
+            Vector3 throwDirection = cam.transform.forward;
+            draggedRb.linearVelocity = throwDirection * throwForce;
+
             draggedRb.useGravity = true;
             draggedRb = null;
         }
